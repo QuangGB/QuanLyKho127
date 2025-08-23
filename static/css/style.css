@@ -1,0 +1,126 @@
+body { background-color: #f7f8fa; }
+.navbar-brand span { font-weight: 600; letter-spacing: .2px; }
+.card-header { font-weight: 600; }
+.table thead th { white-space: nowrap; }
+
+/* Màu nền gradient dịu nhẹ */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #4e73df, #224abe);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #1cc88a, #198754);
+}
+
+/* Card KPI */
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Icon trong KPI card */
+.stat-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+/* Card nhập / xuất */
+.form-card {
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.form-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Card nhập hàng */
+.in-card .card-header {
+  border-bottom: 0;
+  color: #198754;
+  font-size: 1rem;
+}
+
+/* Card xuất hàng */
+.out-card .card-header {
+  border-bottom: 0;
+  color: #dc3545;
+  font-size: 1rem;
+}
+
+/* Nút trong form */
+.form-card button {
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+}
+
+/* Card giao dịch */
+.tx-card {
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tx-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* Bảng giao dịch */
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Badge pastel */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.4em 0.7em;
+}
+
+/* Hiệu ứng load mượt cho nội dung chính */
+.page-content {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeSlideIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flash message hiệu ứng fade-in và auto fade-out */
+.flash-message {
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: flashFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes flashFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-message.fade-out {
+  animation: flashFadeOut 0.6s ease-in forwards;
+}
+
+@keyframes flashFadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+

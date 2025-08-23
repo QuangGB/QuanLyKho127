@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4 mb-3">Giao dịch</h1>
+
+<form class="row g-2 mb-3">
+  <div class="col-md-3">
+    <input class="form-control" type="text" name="name" value="{{ name }}" placeholder="Tên sản phẩm">
+  </div>
+  <div class="col-md-2">
+    <select class="form-select" name="type">
+      <option value="">Tất cả</option>
+      <option value="IN" {{ 'selected' if ttype=='IN' else '' }}>Nhập</option>
+      <option value="OUT" {{ 'selected' if ttype=='OUT' else '' }}>Xuất</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <input class="form-control" type="date" name="start" value="{{ start }}">
+  </div>
+  <div class="col-md-2">
+    <input class="form-control" type="date" name="end" value="{{ end }}">
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary w-100">Lọc</button>
+  </div>
+  <div class="col-md-1">
+    <a class="btn btn-outline-secondary w-100" href="{{ url_for('transactions') }}">Xóa</a>
+  </div>
+</form>
+
+<div class="table-responsive">
+  <table class="table table-sm align-middle">
+    <thead>
+      <tr><th>Ngày</th><th>Tên</th><th>Loại</th><th>Số lượng</th><th>Tạo lúc</th></tr>
+    </thead>
+    <tbody>
+      {% for tx, prod in rows %}
+      <tr>
+        <td>{{ tx.tx_date.strftime('%Y-%m-%d') }}</td>
+        <td><a href="{{ url_for('product_detail', product_id=prod.id) }}">{{ prod.name }}</a></td>
+        <td><span class="badge {{ 'bg-success' if tx.type=='IN' else 'bg-danger' }}">{{ 'Nhập' if tx.type=='IN' else 'Xuất' }}</span></td>
+        <td>{{ tx.quantity }}</td>
+        <td>{{ tx.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-muted">Không có dữ liệu.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

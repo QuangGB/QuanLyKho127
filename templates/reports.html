@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4 mb-3">Xuất báo cáo Word</h1>
+<form method="post" class="row g-3">
+  <div class="col-md-4">
+    <label class="form-label">Từ ngày</label>
+    <input class="form-control" type="date" name="start">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Đến ngày</label>
+    <input class="form-control" type="date" name="end">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary">Tải về .docx</button>
+  </div>
+</form>
+<p class="text-muted mt-3">Không chọn ngày sẽ xuất toàn bộ lịch sử.</p>
+{% endblock %}

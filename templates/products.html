@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4 mb-3">Sản phẩm</h1>
+
+<form class="row g-2 mb-3">
+  <div class="col-md-6">
+    <input class="form-control" type="text" name="q" value="{{ q }}" placeholder="Tìm theo tên...">
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary w-100">Tìm</button>
+  </div>
+  <div class="col-md-3">
+    <a class="btn btn-outline-secondary w-100" href="{{ url_for('products') }}">Xóa lọc</a>
+  </div>
+</form>
+
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr><th>#</th><th>Tên</th><th>Tồn</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for p in items %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.quantity }}</td>
+        <td>
+          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('product_detail', product_id=p.id) }}">Chi tiết</a>
+          
+          <!-- Form xóa sản phẩm -->
+          <form method="post" action="{{ url_for('delete_product', product_id=p.id) }}"
+                style="display:inline-block;"
+                onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm {{ p.name }}?');">
+            <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" class="text-muted">Không có dữ liệu.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
