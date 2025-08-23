@@ -444,4 +444,4 @@ def change_password():
 if __name__ == '__main__':
     # đảm bảo thư mục static/img tồn tại
     os.makedirs('static/img', exist_ok=True)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
