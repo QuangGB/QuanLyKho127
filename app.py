@@ -11,7 +11,8 @@ from functools import wraps
 app = Flask(__name__)
 app.secret_key = "251098"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///local.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
