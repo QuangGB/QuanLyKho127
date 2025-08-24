@@ -3,4 +3,5 @@ Flask-SQLAlchemy==2.5.1
 SQLAlchemy==1.4.49
 python-docx==0.8.11
 gunicorn
+psycopg2-binary
 
